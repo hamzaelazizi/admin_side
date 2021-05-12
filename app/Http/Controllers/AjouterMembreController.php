@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Prof;
 use App\Structure;
+use App\Membre;
 
 use Illuminate\Http\Request;
 
@@ -26,9 +27,9 @@ class AjouterMembreController extends Controller
     
     public function test()
     {
-        $prof= Prof::find(1);
+        $prof= Prof::find(2);
 
-        $structure = $prof->Structure;
+        $structure = Prof::strmbr($prof);
           //$structure = Structure::of($prof->id);
         
         return view('test')->with(['prof' => $prof, 'structure' => $structure]);

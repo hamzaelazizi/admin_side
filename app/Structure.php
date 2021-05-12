@@ -15,16 +15,6 @@ class Structure extends Model
         return $this->hasMany(Membre::class);
     }
 
-    static public function of($id){
-         $structures = self::all();
-         $rt= [];
-
-         foreach($structures as $str){
-            if($str['prof_id'] == $id){
-                $rt []= $str; 
-                            }
-            return $rt[0];
-            }     
-    }
+    
 
 }
