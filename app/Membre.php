@@ -13,4 +13,8 @@ class Membre extends Model
     public function Structure(){
         return $this->belongsTo(Structure::class);
     }
+
+    public function manifestations(){
+        return $this->belongToMany(manifestation::class);
+    }
 }
