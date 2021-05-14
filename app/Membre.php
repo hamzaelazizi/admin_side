@@ -21,4 +21,13 @@ class Membre extends Model
     public function Conferences(){
         return $this->belongsToMany(Conference::class);
     }
+    public function Articles(){
+        return $this->belongsToMany(Article::class);
+    }
+    public function Chapters(){
+        return $this->belongsToMany(Chapter::class);
+    }
+    public function Ouvrages(){
+        return $this->belongsToMany(Ouvrage::class);
+    }
 }
