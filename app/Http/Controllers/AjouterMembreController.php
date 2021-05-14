@@ -28,14 +28,15 @@ class AjouterMembreController extends Controller
     
     public function test()
     {
-        $prof= Prof::find(2);
-         // $manif = Manifestation::find(1);
+        $prof= Prof::find(1);
+          $manif = Manifestation::find(1);
+          $membres = $manif->Organisateurs;
         //  $membres = Membre::all();
         //  $manif->Organisateurs()->attach($membres);
         $structure = Prof::strmbr($prof);
           //$structure = Structure::of($prof->id);
         
-        return view('test')->with(['prof' => $prof, 'structure' => $structure]);
+        return view('test')->with(['prof' => $prof, 'structure' => $structure, 'membres' => $membres]);
     }
 
 

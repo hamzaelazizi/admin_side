@@ -9,6 +9,12 @@
                    <?php  
                    echo $structure;
                    ?>
+
+                   @foreach($membres as $mbr)
+                   <h1>{{$mbr->prenom}}</h1>
+                   @endforeach
+
+
                     
 
 
