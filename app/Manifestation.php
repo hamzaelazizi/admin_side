@@ -8,7 +8,11 @@ class Manifestation extends Model
 {
     //
     public function Organisateurs(){
-        return $this->belongToMany(Membre::class);
+        return $this->belongsToMany(Membre::class);
+    }
+
+    public function Orgaexts(){
+        return $this->hasMany(Orgaext::class);
     }
 }
 

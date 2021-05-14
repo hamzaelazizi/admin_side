@@ -15,6 +15,6 @@ class Membre extends Model
     }
 
     public function manifestations(){
-        return $this->belongToMany(manifestation::class);
+        return $this->belongsToMany(manifestation::class);
     }
 }

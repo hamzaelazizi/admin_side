@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Prof;
 use App\Structure;
 use App\Membre;
+use App\Manifestation;
 
 use Illuminate\Http\Request;
 
@@ -28,7 +29,9 @@ class AjouterMembreController extends Controller
     public function test()
     {
         $prof= Prof::find(2);
-
+         // $manif = Manifestation::find(1);
+        //  $membres = Membre::all();
+        //  $manif->Organisateurs()->attach($membres);
         $structure = Prof::strmbr($prof);
           //$structure = Structure::of($prof->id);
         
