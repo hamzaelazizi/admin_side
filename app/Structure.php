@@ -15,6 +15,6 @@ class Structure extends Model
         return $this->hasMany(Membre::class);
     }
 
-    
+    protected $fillable = ["titre", "type", "Description", "Logo", "prof_id", "created_at", "updated_at"];
 
 }

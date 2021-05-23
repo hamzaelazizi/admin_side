@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
+    //'default' => env('FILESYSTEM_DRIVER', 'local'),
+    'default' => 'custom',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,12 +47,20 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
+           
         ],
 
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+        'out' => [
+            'driver' => 'local',
+            'root'   => 'file:///C:\Users\Lenovo\Desktop\laravel\projet\user_side\storage\app\public',
+            'url' => env('APP_URL').'/out',
             'visibility' => 'public',
         ],
 

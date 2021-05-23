@@ -27,6 +27,10 @@ class Prof extends Model
     }
 
 
+    protected $fillable = [
+        'name', 'email', 'password', 'membre_id',
+    ];
+
 
 
 

@@ -6,6 +6,7 @@ use App\Prof;
 use App\Structure;
 use App\Membre;
 use App\Manifestation;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
 
@@ -28,6 +29,15 @@ class AjouterMembreController extends Controller
     
     public function test()
     {
+
+     //    Prof::create([
+     //       'name'=> 'prof1',
+     //       'email'=>'prof1@email.com',
+     //       'password'=>Hash::make('password'),
+     //       'membre_id'=>'0',
+     //]); 
+
+
         $prof= prof::find(1);
           $manif = manifestation::find(1);
           $membres = $manif->Organisateurs;
@@ -62,6 +72,11 @@ class AjouterMembreController extends Controller
     public function ajouterprofp()
     {
         return view('ajouterdoctorant');
+    }
+
+    public function ajouterstructure()
+    {
+        return view('ajouterstructure');
     }
 
     /**

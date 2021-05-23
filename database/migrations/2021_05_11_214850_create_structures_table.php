@@ -17,7 +17,6 @@ class CreateStructuresTable extends Migration
             $table->bigIncrements('id');
             $table->string('titre');
             $table->string('type');
-            $table->unsignedBigInteger('ID_Responsable');
             $table->text('Description');
             $table->string('Logo');
             $table->integer('prof_id')->unsigned()->index();

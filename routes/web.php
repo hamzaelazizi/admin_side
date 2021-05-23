@@ -24,8 +24,14 @@ Route::get('/addprofnp', 'AjouterMembreController@addprofnp');
 Route::get('/adddoc', 'AjouterMembreController@adddoc');
 Route::get('/adddoctorant', 'AjouterMembreController@adddoctorant');
 
+Route::get('/ajouterstructure', 'PageController@ajouterstructure');
+
+Route::get('/afficherstructures', 'PageController@afficherstructures');
+
 Route::post('/ajouterprofp', 'AjouterMembreController@ajouterprofp');
 
 Route::get('/test', 'AjouterMembreController@test');
+
+Route::resource('structures', 'StructureController');
 
 
