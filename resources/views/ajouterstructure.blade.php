@@ -40,7 +40,7 @@
                                     <div class="col-12">
                                     <div class="form-file">
                                     <label for="basicInput">Logo:</label>
-                                                <input type="file" class="form-file-input" id="Logo" name="Logo" accept="image/*" >
+                                                <input type="file" class="form-file-input" id="Logo" name="Logo" accept="image/*" required>
                                                 
                                             </div>
                                     </div>

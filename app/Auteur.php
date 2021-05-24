@@ -19,4 +19,13 @@ class Auteur extends Model
     public function Ouvrage(){
         return $this->belongsTo(Ouvrage::class);
     }
+
+    protected $fillable = [
+        'nom',
+                                            'prenom',
+                                            'ouvrage_id',
+                                            'article_id',
+                                            'conference_id',
+                                            'chapter_id',
+    ];
 }

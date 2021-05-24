@@ -15,6 +15,10 @@ class Structure extends Model
         return $this->hasMany(Membre::class);
     }
 
+    public function Note(){
+        return $this->hasOne(Note::class);
+    }
+
     protected $fillable = ["titre", "type", "Description", "Logo", "prof_id", "created_at", "updated_at"];
 
 }

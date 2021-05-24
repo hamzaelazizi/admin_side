@@ -30,4 +30,6 @@ class Membre extends Model
     public function Ouvrages(){
         return $this->belongsToMany(Ouvrage::class);
     }
+
+    protected $fillable = ["nom", "prenom", "image", "genre", "statut", "grade", "fonction", "email", "etablissement", "structure_id", "created_at", "updated_at"];
 }

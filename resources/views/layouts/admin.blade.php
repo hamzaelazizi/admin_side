@@ -36,7 +36,7 @@
 
 
 
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item ">
                             <a href="#" class='sidebar-link'>
                                 <i data-feather="home" width="20"></i>
                                 <span>Dashboard</span>
@@ -54,17 +54,17 @@
                             <ul class="submenu ">
 
                                 <li>
-                                    <a href="addprofp">Ajouter Professeur Permanent</a>
+                                    <a href="#">Ajouter Professeur Permanent</a>
                                 </li>
 
                                 <li>
-                                    <a href="addprofnp">Ajouter Professeur Non Permanent</a>
+                                    <a href="#">Ajouter Professeur Non Permanent</a>
                                 </li>
                                 <li>
-                                    <a href="adddoc">Ajouter Docteur</a>
+                                    <a href="#">Ajouter Docteur</a>
                                 </li>
                                 <li>
-                                    <a href="adddoctorant">Ajouter Doctorant</a>
+                                    <a href="#">Ajouter Doctorant</a>
                                 </li>
 
                                 
@@ -72,6 +72,66 @@
                             </ul>
 
                         </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class="sidebar-link">
+                                <span>Structures</span>
+                            </a>
+
+                            <ul class="submenu ">
+
+                                <li>
+                                    <a href="ajouterstructure">Ajouter structure</a>
+                                </li>
+
+                                <li>
+                                    <a href="afficherstructures">Afficher tout les structures</a>
+                                </li>
+                              
+                            </ul>
+
+                        </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class="sidebar-link">
+                                <span>Membres</span>
+                            </a>
+
+                            <ul class="submenu ">
+
+                            <li>
+                                    <a href="#">Ajouter professeur</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/ajoutermembre">Ajouter membre associé</a>
+                                </li>
+
+                                <li>
+                                    <a href="#">Afficher tout les membres</a>
+                                </li>
+                              
+                            </ul>
+
+                        </li>
+
+                        <li class="sidebar-item ">
+                            <a href="#" class='sidebar-link'>
+                                
+                                <span>Afficher les notes des structures</span>
+                            </a>
+
+                        </li>
+
+                        <li class="sidebar-item ">
+                            <a href="#" class='sidebar-link'>
+                                
+                                <span>Modifier les coefficients</span>
+                            </a>
+
+                        </li>
+
+
 
 
 

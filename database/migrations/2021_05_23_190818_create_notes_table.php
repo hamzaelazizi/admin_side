@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMembresTable extends Migration
+class CreateNotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,10 @@ class CreateMembresTable extends Migration
      */
     public function up()
     {
-        Schema::create('membres', function (Blueprint $table) {
+        Schema::create('notes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('image');
-            $table->string('genre');
-            $table->string('statut');
-            $table->string('grade');
-            $table->string('fonction');
-            $table->string('email');
-            $table->string('etablissement');
             $table->integer('structure_id')->unsigned()->index();
+            $table->integer('note');
             $table->timestamps();
         });
     }
@@ -36,6 +28,6 @@ class CreateMembresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('membres');
+        Schema::dropIfExists('notes');
     }
 }

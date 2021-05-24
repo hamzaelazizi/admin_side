@@ -13,4 +13,12 @@ class Ouvrage extends Model
     public function Auteurs(){
         return $this->belongsToMany(Membre::class);
     }
+
+    protected $fillable = [
+        'titre',
+        'date',
+        'isbn',
+        'issn',
+        'publisher',
+    ];
 }

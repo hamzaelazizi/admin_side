@@ -6,6 +6,8 @@ use App\Prof;
 use App\Structure;
 use App\Membre;
 use App\Manifestation;
+use App\Ouvrage;
+use App\Auteur;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
@@ -30,23 +32,47 @@ class AjouterMembreController extends Controller
     public function test()
     {
 
-     //    Prof::create([
-     //       'name'=> 'prof1',
-     //       'email'=>'prof1@email.com',
-     //       'password'=>Hash::make('password'),
-     //       'membre_id'=>'0',
-     //]); 
+    /**      Prof::create([
+            'name'=> 'prof1',
+            'email'=>'prof1@email.com',
+            'password'=>Hash::make('password'),
+            'membre_id'=>'1',
+     ]); */
+     // return view('home');
+
+       // $prof= prof::find(1);
+                                              // $manif = manifestation::find(1);
+         // $membres = $manif->Organisateurs;
+                                               //   $membres = Membre::all();
+                                               //  $manif->Organisateurs()->attach($membres);
+  
+                                        $ouvr=Ouvrage::create([
+                                                'titre'=> 'ouvrage2',
+                                                'date'=>'2021-05-24',
+                                                'isbn'=> '876',
+                                                'issn'=> '6547',
+                                                'publisher'=> 'dar sa7afa',
+                                         ]);
+                                         $membre1 = Membre::find(1);
+                                         $ouvr->Auteurs()->attach($membre1);
+                                         $membre2 = Membre::find(2);
+                                         $ouvr->Auteurs()->attach($membre2);
+                                         Auteur::create([
+                                            'nom'=> 'nom1',
+                                            'prenom'=> 'prenom1',
+                                            'ouvrage_id'=> $ouvr->id,
+                                            'article_id'=>0,
+                                            'conference_id'=>0,
+                                            'chapter_id'=>0,
+                                         ]);
+                                         
 
 
-        $prof= prof::find(1);
-          $manif = manifestation::find(1);
-          $membres = $manif->Organisateurs;
-        //  $membres = Membre::all();
-        //  $manif->Organisateurs()->attach($membres);
-        $structure = prof::strmbr($prof);
+        return view('home');
+      //  $structure = prof::strmbr($prof);
           //$structure = Structure::of($prof->id);
         
-        return view('test')->with(['prof' => $prof, 'structure' => $structure, 'membres' => $membres]);
+      //  return view('test')->with(['prof' => $prof, 'structure' => $structure, 'membres' => $membres]);
     }
 
 

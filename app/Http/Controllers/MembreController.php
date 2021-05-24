@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Structure;
 use Illuminate\Http\Request;
+use App\Membre;
 use Illuminate\Support\Facades\Storage;
 
-class StructureController extends Controller
+class MembreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,6 @@ class StructureController extends Controller
     public function create()
     {
         //
-        return view('structures.create');
     }
 
     /**
@@ -38,42 +37,26 @@ class StructureController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'titre' => 'required',
-            'type' => 'required',
-            'Description' => 'required',
-        ]);
+        $request->image->store('Logo', 'public');
+        \File::copy( Storage::disk('public')->path('Logo/'.$request->image->hashName()), Storage::disk('out')->path('Logo/'.$request->image->hashName()));
+
         
-        if ($request->hasFile('Logo')) {
 
-            
+        // Store the record, using the new file hashname which will be it's new filename identity.
+        Membre::create([
+            "nom" => $request->get('nom'),
+            "prenom" => $request->get('prenom'),
+            "email" => $request->get('email'),
+            "structure_id" => $request->get('structure'),
+            "genre" => $request->get('genre'),
+            "statut" => "Associé",
+            "grade" => $request->get('grade'),
+            "fonction" => $request->get('grade'),
+            "etablissement" => $request->get('grade'),
+            "image" => $request->image->hashName(),
+            ]); 
 
-            // Save the file locally in the storage/public/ folder under a new folder named /product
-            $request->Logo->store('Logo', 'public');
-            \File::copy( Storage::disk('public')->path('Logo/'.$request->Logo->hashName()), Storage::disk('out')->path('Logo/'.$request->Logo->hashName()));
-
-            
-
-            // Store the record, using the new file hashname which will be it's new filename identity.
-            Structure::create([
-                "titre" => $request->get('titre'),
-                "type" => $request->get('type'),
-                "Description" => $request->get('Description'),
-                "prof_id" => 0,
-                "Logo" => $request->Logo->hashName(),
-                ]); 
-
-          //  $structure = new Structure([
-           //     "titre" => $request->get('titre'),
-             //   "type" => $request->get('type'),
-             //   "Description" => $request->get('Description'),
-             //   "prof_id" => 0,
-              //  "Logo" => $request->Logo->hashName()
-           // ]);
-           // $structure->save(); // Finally, save the record.
-        }
-
-        return redirect('/ajouterstructure')->withSuccess('');
+            return redirect('/ajoutermembre')->withSuccess('');
     }
 
     /**

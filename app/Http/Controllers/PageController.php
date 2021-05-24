@@ -28,4 +28,17 @@ class PageController extends Controller
     {
         return view('ajouterstructure');
     }
+
+    public function ajoutermembre()
+    {
+        $structures = Structure::all();
+        return view('ajoutermembre')->with(['structures' => $structures]);
+    }
+
+    public function ajouterprof()
+    {
+        $structures = Structure::all();
+        return view('ajouterprof')->with(['structures' => $structures]);
+    }
+    
 }
