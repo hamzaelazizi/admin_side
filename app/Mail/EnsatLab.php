@@ -28,7 +28,7 @@ class EnsatLab extends Mailable
 
      */
 
-    public $user;
+    public $password;
 
     /**
 
@@ -40,11 +40,11 @@ class EnsatLab extends Mailable
 
      */
 
-    public function __construct(String $user)
+    public function __construct(String $password)
 
     {
 
-        $this->user = $user;
+        $this->password = $password;
 
     }
 

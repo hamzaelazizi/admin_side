@@ -22,7 +22,7 @@ class CreateNombresTable extends Migration
             $table->integer('article_index');
             $table->integer('article');
             $table->integer('doctorat');//
-            $table->intger('brevet');//
+            $table->integer('brevet');//
             $table->integer('manifestation_nat');
             $table->integer('manifestation_reg');
             $table->integer('membre_per');

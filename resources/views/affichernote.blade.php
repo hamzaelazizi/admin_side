@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+
+
 <div class="main-content container-fluid">
                 <div class="page-title">
                     <div class="row">
@@ -27,18 +29,18 @@
                             <table class='table table-striped' id="table1">
                                 <thead>
                                     <tr>
+                                        <th>Note</th>
                                         <th>Logo</th>
                                         <th>Titre</th>
                                         <th>Type</th>
                                         <th>Responsable</th>
                                         <th>Voir</th>
-                                        <th>Éditer</th>
-                                        <th>Supprimer</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($structures as $str)
-                                    <tr>
+                                    <tr><td><h4>{{$str->Note->note}}</h4></td>
                                         <td>
                                         <div class="avatar avatar-xl rounded-circle">
                                     <img src="storage/Logo/{{ $str->Logo }}" alt="" srcset="">
@@ -58,16 +60,16 @@
                                         ?>
                                         </form>
                                         </td>
-                                        <td><a href="#"><span class="badge bg-secondary">Voir</span></a>
+                                        
+                                        <td>
+                                        <form action="{{ url('/structnote') }}" method="post" >
+                                            @csrf
+                                       <button type="submit" name="submit" id="submit" value="{{$str->id}}" class="badge bg-secondary">Voir</button>
+                                                
+                                        </form>
                                         </td>
-                                        <td><form action="{{ url('/structedit') }}" method="post" >
-                                @csrf
-                                        <button type="submit" name="submit" id="submit" value="{{$str->id}}" class="badge bg-secondary">Éditer</button>
-                                        </form></td>
-                                        <td><form action="{{ url('/structsupp') }}" method="post" onsubmit="return confirmer()" >
-                                @csrf
-                                        <button type="submit" name="submit" id="submit" value="{{$str->id}}" class="badge bg-danger">Supprimer</button>
-                                        </form></td>
+                                        </td>
+                                        
                                     </tr>
                    
                                 @endforeach
@@ -80,16 +82,7 @@
                 </section>
             </div>
 
-            <script type="text/javascript">
-  
-  function confirmer(){
-    var res = confirm("Êtes-vous sûr de vouloir supprimer la structure ?");
-    if(res){
-        return true;
-    }
-    return false;
-}
-                </script>
+            
 
 @endsection
 

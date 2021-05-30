@@ -11,36 +11,37 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-//Route::get('/addprofp', 'AjouterMembreController@addprofp');
-//Route::get('/addprofnp', 'AjouterMembreController@addprofnp');
-//Route::get('/adddoc', 'AjouterMembreController@adddoc');
-//Route::get('/adddoctorant', 'AjouterMembreController@adddoctorant');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/ajouterstructure', 'PageController@ajouterstructure');
+Route::get('/afficherstructures', 'PageController@afficherstructures');
+Route::post('/structsupp', 'StructureController@supp');
+Route::post('/structedit', 'StructureController@editer');
+Route::post('/structnote', 'StructureController@note');
 
 Route::get('/ajoutermembre', 'PageController@ajoutermembre');
+Route::get('/affichermembres', 'PageController@affichermembres');
 
 Route::get('/ajouterprof', 'PageController@ajouterprof');
 
-Route::get('/afficherstructures', 'PageController@afficherstructures');
+Route::get('/modifcoeff', 'PageController@modifcoeff');
 
-//Route::post('/ajouterprofp', 'AjouterMembreController@ajouterprofp');
+Route::get('/affichernote', 'PageController@affichernote');
 
-Route::get('/test1', 'AjouterMembreController@test');
+//Route::get('/test1', 'AjouterMembreController@test');
 
 Route::resource('structures', 'StructureController');
 
+Route::resource('coeffs', 'CoeffController');
+
 Route::resource('membres', 'MembreController');
 
-Route::get('/test', function () {
+Route::resource('profs', 'ProfController');
+
+/** Route::get('/test', function () {
 
 	
 
@@ -50,7 +51,13 @@ Route::get('/test', function () {
 
     dd("Email is Send.");
 
+}); */
+
+Route::get('/profile', function(){
+
+    return view('profile');
 });
+
 
 
 

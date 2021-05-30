@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Membre;
+use App\Prof;
+
+use App\Mail\UserRegistered;
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
-
-class MembreController extends Controller
+class ProfController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,20 +49,30 @@ class MembreController extends Controller
         
 
         // Store the record, using the new file hashname which will be it's new filename identity.
-        Membre::create([
+       $newmembre= Membre::create([
             "nom" => $request->get('nom'),
             "prenom" => $request->get('prenom'),
             "email" => $request->get('email'),
             "structure_id" => $request->get('structure'),
             "genre" => $request->get('genre'),
-            "statut" => "Associé",
+            "statut" => $request->get('genre'),
             "grade" => $request->get('grade'),
-            "fonction" => $request->get('grade'),
+            "fonction" => "Professeur",
             "etablissement" => $request->get('grade'),
             "image" => $request->image->hashName(),
             ]); 
+            $password = str_random(8);
+            Prof::create([
+                'name'=> $request->get('nom')." ".$request->get('prenom'),
+                'email'=>$request->get('email'),
+                'password'=>Hash::make($password),
+                'membre_id'=>$newmembre->id,
+         ]);
 
-            return redirect('/ajoutermembre')->withSuccess('');
+         Mail::to($request->get('email'))->send(new \App\Mail\EnsatLab($password));
+
+
+            return redirect('/ajouterprof')->withSuccess('');
     }
 
     /**

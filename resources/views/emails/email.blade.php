@@ -5,9 +5,9 @@
 
 <body>
 
-	<h1>Mail from laravel project</h1>
+	<h1></h1>
 
-	<p>Thank you, {{ $user }}</p>
+	<p>Vous pouvez vous connecter à 127.0.0.1 en utilisant le mot de pass :  {{ $password }}</p>
 
 </body>
 

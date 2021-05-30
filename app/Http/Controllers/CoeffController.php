@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Coeff;
 use Illuminate\Http\Request;
-use App\Membre;
-use Illuminate\Support\Facades\Storage;
 
-
-class MembreController extends Controller
+class CoeffController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,26 +35,6 @@ class MembreController extends Controller
     public function store(Request $request)
     {
         //
-        $request->image->store('Logo', 'public');
-        \File::copy( Storage::disk('public')->path('Logo/'.$request->image->hashName()), Storage::disk('out')->path('Logo/'.$request->image->hashName()));
-
-        
-
-        // Store the record, using the new file hashname which will be it's new filename identity.
-        Membre::create([
-            "nom" => $request->get('nom'),
-            "prenom" => $request->get('prenom'),
-            "email" => $request->get('email'),
-            "structure_id" => $request->get('structure'),
-            "genre" => $request->get('genre'),
-            "statut" => "Associé",
-            "grade" => $request->get('grade'),
-            "fonction" => $request->get('grade'),
-            "etablissement" => $request->get('grade'),
-            "image" => $request->image->hashName(),
-            ]); 
-
-            return redirect('/ajoutermembre')->withSuccess('');
     }
 
     /**
@@ -92,6 +69,22 @@ class MembreController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
+        Coeff::where('id', $id)->update([
+            "conference" => $request->get('conference'),
+            "ouvrage" => $request->get('ouvrage'),
+            "chapter" => $request->get('chapter'),
+            "article_index" => $request->get('article_index'),
+            "article" => $request->get('article'),
+            "doctorat" => $request->get('doctorat'),
+            "brevet" => $request->get('brevet'),
+            "manifestation_nat" => $request->get('manifestation_nat'),
+            "manifestation_reg" => $request->get('manifestation_reg'),
+            "membre_per" => $request->get('membre_per'),   
+                
+        ]);
+
+        return redirect("/modifcoeff");
     }
 
     /**
